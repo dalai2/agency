@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 import Button from '@/components/Button';
 
 export const metadata = {
-  title: 'Blog | Agencia Digital México',
+  title: 'Blog | VELANT Agencia Digital',
   description: 'Próximamente: tips, guías y contenido educativo sobre desarrollo web y marketing digital.',
 };
 
@@ -55,7 +55,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <BookOpen className="mx-auto mb-6" size={64} />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-exo2 font-bold mb-6 uppercase">
               Nuestro Blog
             </h1>
             <p className="text-xl text-white/90">
@@ -180,5 +180,9 @@ export default function BlogPage() {
     </div>
   );
 }
+
+
+
+
 
 

@@ -4,8 +4,8 @@ import Button from '@/components/Button';
 import Card from '@/components/Card';
 
 export const metadata = {
-  title: 'Servicios de Desarrollo Web | Agencia Digital México',
-  description: 'Landing pages, e-commerce, sitios corporativos y más. Precios especiales de lanzamiento. Entrega en 3-10 días.',
+  title: 'Servicios | VELANT Agencia Digital',
+  description: 'Software, E-commerce, Landing Pages, AI Services y Diseño. Tu presencia digital en días, no meses. Precios especiales de lanzamiento.',
 };
 
 export default function ServiciosPage() {
@@ -137,11 +137,11 @@ export default function ServiciosPage() {
       <section className="bg-gradient-primary text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Servicios de Desarrollo Web
+            <h1 className="text-4xl md:text-5xl font-exo2 font-bold mb-6 uppercase">
+              Servicios
             </h1>
             <p className="text-xl text-white/90">
-              Soluciones profesionales a precios justos. Precios especiales de lanzamiento disponibles ahora.
+              Software, E-commerce, Landing Pages, AI Services y Diseño. Velocidad, eficiencia y tecnología de vanguardia.
             </p>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function ServiciosPage() {
       {/* Servicios Principales */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-dark mb-12">
+          <h2 className="text-3xl md:text-4xl font-exo2 font-bold text-center text-dark mb-12 uppercase">
             Servicios Principales
           </h2>
 
@@ -383,5 +383,9 @@ export default function ServiciosPage() {
     </div>
   );
 }
+
+
+
+
 
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
+import Logo from './Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,13 +34,8 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">AD</span>
-            </div>
-            <span className="text-xl font-bold text-dark hidden sm:block">
-              Agencia Digital
-            </span>
+          <Link href="/" className="flex items-center">
+            <Logo size="sm" showText={true} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -92,5 +88,9 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
 
 

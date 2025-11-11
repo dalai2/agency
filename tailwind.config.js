@@ -8,20 +8,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#06B6D4',
-        secondary: '#8B5CF6',
-        accent: '#EC4899',
-        dark: '#0F172A',
-        light: '#F1F5F9',
+        primary: '#2E4354',
+        secondary: '#F0F7F7',
+        accent: '#000000',
+        dark: '#2E4354',
+        light: '#F0F7F7',
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #06B6D4, #8B5CF6)',
-        'gradient-accent': 'linear-gradient(135deg, #8B5CF6, #EC4899)',
-        'gradient-full': 'linear-gradient(135deg, #06B6D4, #8B5CF6, #EC4899)',
+        'gradient-primary': 'linear-gradient(135deg, #2E4354, #000000)',
+        'gradient-accent': 'linear-gradient(135deg, #000000, #2E4354)',
+        'gradient-full': 'linear-gradient(135deg, #2E4354, #000000, #F0F7F7)',
+      },
+      fontFamily: {
+        'exo2': ['var(--font-exo2)', 'sans-serif'],
+        'poppins': ['var(--font-poppins)', 'sans-serif'],
+        'sans': ['var(--font-poppins)', 'sans-serif'],
       },
     },
   },
   plugins: [],
 }
+
+
+
+
 
 

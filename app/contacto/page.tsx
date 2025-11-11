@@ -89,7 +89,7 @@ export default function ContactoPage() {
       <section className="bg-gradient-primary text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-exo2 font-bold mb-6 uppercase">
               Hablemos de Tu Proyecto
             </h1>
             <p className="text-xl text-white/90">
@@ -116,8 +116,8 @@ export default function ContactoPage() {
                 <Mail className="text-accent" size={32} />
               </div>
               <h3 className="text-lg font-bold text-dark mb-2">Email</h3>
-              <a href="mailto:contacto@agenciadigital.com" className="text-accent hover:underline">
-                contacto@agenciadigital.com
+              <a href="mailto:contacto@velant.mx" className="text-primary hover:underline">
+                contacto@velant.mx
               </a>
             </Card>
 
@@ -315,10 +315,10 @@ export default function ContactoPage() {
                   Escríbenos directamente a nuestro email si prefieres comunicación escrita detallada.
                 </p>
                 <a
-                  href="mailto:contacto@agenciadigital.com"
-                  className="text-accent hover:underline font-medium"
+                  href="mailto:contacto@velant.mx"
+                  className="text-primary hover:underline font-medium"
                 >
-                  contacto@agenciadigital.com
+                  contacto@velant.mx
                 </a>
               </Card>
             </div>
@@ -366,5 +366,9 @@ export default function ContactoPage() {
     </div>
   );
 }
+
+
+
+
 
 

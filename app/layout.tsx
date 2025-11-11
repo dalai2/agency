@@ -1,20 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Exo_2, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const inter = Inter({ subsets: ["latin"] });
+const exo2 = Exo_2({ 
+  subsets: ["latin"],
+  variable: '--font-exo2',
+  display: 'swap',
+});
+
+const poppins = Poppins({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  variable: '--font-poppins',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Agencia Digital México | Desarrollo Web Profesional",
-  description: "Ayudamos a empresas medianas en México a establecer su presencia digital de forma rápida, profesional y accesible. Landing pages, e-commerce y más en 3-10 días.",
-  keywords: "desarrollo web méxico, agencia digital, landing pages, e-commerce, sitios web profesionales",
-  authors: [{ name: "Agencia Digital" }],
+  title: "VELANT - Agencia Digital | Tu Presencia Digital en Días, No Meses",
+  description: "VELANT Agencia Digital: Innovación constante, adaptabilidad y confianza. Software, E-commerce, Landing Pages, AI Services y Diseño. Tu presencia digital lista en días.",
+  keywords: "velant, agencia digital méxico, desarrollo web, e-commerce, landing pages, ai services, diseño web, software desarrollo",
+  authors: [{ name: "VELANT Agencia Digital" }],
   openGraph: {
-    title: "Agencia Digital México | Tu presencia digital lista en días",
-    description: "Desarrollo web profesional para empresas medianas. Precios justos, entrega rápida.",
+    title: "VELANT Agencia Digital | Tu Presencia Digital en Días, No Meses",
+    description: "Velocidad, eficiencia y liderazgo. Servicios de Software, E-commerce, Landing Pages, AI y Diseño.",
     type: "website",
     locale: "es_MX",
   },
@@ -27,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es-MX">
-      <body className={inter.className}>
+      <body className={`${poppins.variable} ${exo2.variable} font-sans`} style={{ fontFamily: 'var(--font-poppins)' }}>
         <Header />
         <main className="min-h-screen">
           {children}

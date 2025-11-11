@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 import Button from '@/components/Button';
 
 export const metadata = {
-  title: 'Portafolio | Agencia Digital México',
+  title: 'Portafolio | VELANT Agencia Digital',
   description: 'Conoce nuestros proyectos de desarrollo web. Próximamente casos de éxito de nuestros clientes.',
 };
 
@@ -45,7 +45,7 @@ export default function PortafolioPage() {
       <section className="bg-gradient-primary text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-exo2 font-bold mb-6 uppercase">
               Nuestro Portafolio
             </h1>
             <p className="text-xl text-white/90">
@@ -191,5 +191,9 @@ export default function PortafolioPage() {
     </div>
   );
 }
+
+
+
+
 
 
