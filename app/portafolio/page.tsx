@@ -1,7 +1,6 @@
 import React from 'react';
-import { Globe, Rocket, Package } from 'lucide-react';
-import Card from '@/components/Card';
 import Button from '@/components/Button';
+import PortfolioContent from './PortfolioContent';
 
 export const metadata = {
   title: 'Portafolio | VELANT Agencia Digital',
@@ -15,28 +14,6 @@ export default function PortafolioPage() {
     { nombre: 'Landing Pages', slug: 'landing' },
     { nombre: 'E-commerce', slug: 'ecommerce' },
     { nombre: 'Corporativos', slug: 'corporativo' },
-  ];
-
-  // Placeholder de proyectos para la estructura futura
-  const proyectosPlaceholder = [
-    {
-      icon: <Globe size={40} />,
-      titulo: 'Proyecto Landing Page',
-      categoria: 'Landing Pages',
-      color: 'primary',
-    },
-    {
-      icon: <Package size={40} />,
-      titulo: 'Proyecto E-commerce',
-      categoria: 'E-commerce',
-      color: 'accent',
-    },
-    {
-      icon: <Rocket size={40} />,
-      titulo: 'Proyecto Corporativo',
-      categoria: 'Corporativos',
-      color: 'secondary',
-    },
   ];
 
   return (
@@ -78,96 +55,7 @@ export default function PortafolioPage() {
       {/* Contenido Principal */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          {/* Estado: Próximamente */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="w-32 h-32 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-8">
-              <Rocket className="text-white" size={64} />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-              Próximamente Nuestros Primeros Proyectos
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Estamos trabajando en proyectos increíbles para nuestros primeros clientes. 
-              Pronto podrás ver aquí casos de éxito, testimonios y ejemplos de nuestro trabajo.
-            </p>
-            <Button href="/contacto" variant="primary" size="lg">
-              Sé Uno de Nuestros Primeros Clientes
-            </Button>
-          </div>
-
-          {/* Preview de estructura futura */}
-          <div className="max-w-6xl mx-auto">
-            <h3 className="text-2xl font-bold text-dark text-center mb-8">
-              Así lucirán nuestros proyectos
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {proyectosPlaceholder.map((proyecto, index) => (
-                <Card key={index} hover className="opacity-60">
-                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                    <div className={`text-${proyecto.color} opacity-50`}>
-                      {proyecto.icon}
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className={`inline-block px-3 py-1 bg-${proyecto.color}/10 text-${proyecto.color} text-xs font-semibold rounded-full`}>
-                      {proyecto.categoria}
-                    </div>
-                    <h3 className="text-xl font-bold text-dark">
-                      {proyecto.titulo}
-                    </h3>
-                    <p className="text-gray-600">
-                      Descripción del proyecto y tecnologías utilizadas.
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Lo que incluiremos en cada caso */}
-      <section className="py-20 bg-light">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-dark text-center mb-12">
-              Cada Proyecto Mostrará
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card>
-                <h3 className="text-xl font-bold text-dark mb-2">
-                  📸 Screenshots del Proyecto
-                </h3>
-                <p className="text-gray-600">
-                  Imágenes de alta calidad mostrando el diseño y funcionalidades
-                </p>
-              </Card>
-              <Card>
-                <h3 className="text-xl font-bold text-dark mb-2">
-                  🎯 Objetivos y Resultados
-                </h3>
-                <p className="text-gray-600">
-                  Qué buscaba el cliente y qué logramos juntos
-                </p>
-              </Card>
-              <Card>
-                <h3 className="text-xl font-bold text-dark mb-2">
-                  💻 Tecnologías Utilizadas
-                </h3>
-                <p className="text-gray-600">
-                  Stack tecnológico y herramientas implementadas
-                </p>
-              </Card>
-              <Card>
-                <h3 className="text-xl font-bold text-dark mb-2">
-                  ⭐ Testimonio del Cliente
-                </h3>
-                <p className="text-gray-600">
-                  Palabras directas de clientes satisfechos
-                </p>
-              </Card>
-            </div>
-          </div>
+          <PortfolioContent />
         </div>
       </section>
 
