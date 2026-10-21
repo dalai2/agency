@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import HomeContactForm from '@/components/HomeContactForm';
 
@@ -21,9 +22,9 @@ const steps = [
 ];
 
 const posts = [
-  { tag: 'Pagos', t: 'Cómo aceptar OXXO, SPEI y tarjeta en tu tienda', d: 'Qué métodos de pago esperan tus clientes en México y cómo activarlos.' },
-  { tag: 'Logística', t: 'Envíos a todo el país sin perder margen', d: 'Opciones de paquetería y cómo calcular el costo de envío por zona.' },
-  { tag: 'Ventas', t: 'Tu primera tienda en línea: lista de lanzamiento', d: 'Lo mínimo que necesitas revisar antes de recibir tu primer pedido.' },
+  { tag: 'Pagos', t: 'Cómo aceptar OXXO, SPEI y tarjeta en tu tienda', d: 'Qué métodos de pago esperan tus clientes en México y cómo activarlos.', img: '/images/blog-pagos.png', alt: 'Terminal de pago con tarjeta junto a una bolsa de papel' },
+  { tag: 'Logística', t: 'Envíos a todo el país sin perder margen', d: 'Opciones de paquetería y cómo calcular el costo de envío por zona.', img: '/images/blog-envios.png', alt: 'Cajas de cartón selladas listas para enviar' },
+  { tag: 'Ventas', t: 'Tu primera tienda en línea: lista de lanzamiento', d: 'Lo mínimo que necesitas revisar antes de recibir tu primer pedido.', img: '/images/blog-lanzamiento.png', alt: 'Laptop con una tienda en línea y una libreta con lista de pendientes' },
 ];
 
 export default function Home() {
@@ -58,13 +59,14 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          {/* Placeholder: reemplazar por una captura real de una tienda en celular y laptop */}
-          <div
-            className="flex aspect-[5/4] items-end rounded-[10px] border border-secondary/25 p-[18px] font-mono text-xs text-secondary"
-            style={{ background: 'repeating-linear-gradient(135deg,#355064 0 14px,#2E4354 14px 28px)' }}
-          >
-            [ captura de tienda en celular y laptop ]
-          </div>
+          <Image
+            src="/images/hero-tienda.png"
+            alt="Tienda en línea de joyería vista en laptop y celular"
+            width={2000}
+            height={1600}
+            priority
+            className="aspect-[5/4] w-full rounded-[10px] border border-secondary/25 object-cover"
+          />
         </div>
         <div className="border-t border-secondary/20">
           <div
@@ -119,13 +121,13 @@ export default function Home() {
           >
             {posts.map((p) => (
               <Link key={p.t} href="/blog" className="block text-primary">
-                {/* Placeholder: reemplazar por la imagen del artículo */}
-                <div
-                  className="mb-[18px] flex aspect-[16/10] items-end rounded-lg p-3 font-mono text-[11px]"
-                  style={{ background: 'repeating-linear-gradient(135deg,#F0F7F7 0 12px,#e3eef0 12px 24px)' }}
-                >
-                  [ imagen del artículo ]
-                </div>
+                <Image
+                  src={p.img}
+                  alt={p.alt}
+                  width={1280}
+                  height={800}
+                  className="mb-[18px] aspect-[16/10] w-full rounded-lg object-cover"
+                />
                 <div className="mb-2 text-xs font-semibold uppercase tracking-[0.08em] opacity-75">{p.tag}</div>
                 <h3 className="mb-2 font-exo2 text-[21px] font-bold leading-tight">{p.t}</h3>
                 <p className="m-0 text-[15px] leading-[1.6] text-[#44596a]">{p.d}</p>
