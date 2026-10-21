@@ -19,8 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "VELANT - Agencia Digital | Tu Presencia Digital en Días, No Meses",
-  description: "VELANT Agencia Digital: Innovación constante, adaptabilidad y confianza. Software, E-commerce, Landing Pages, AI Services y Diseño. Tu presencia digital lista en días.",
+  title: "VELANT - Agencia Digital | Tu tienda en línea en días, no meses",
+  description: "VELANT Agencia Digital: diseñamos y lanzamos tiendas en línea para PyMEs en México, con pagos en pesos, envíos a todo el país y soporte en español.",
   keywords: "velant, agencia digital méxico, desarrollo web, e-commerce, landing pages, ai services, diseño web, software desarrollo",
   authors: [{ name: "VELANT Agencia Digital" }],
   openGraph: {
