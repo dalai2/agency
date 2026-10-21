@@ -70,7 +70,7 @@ const HomeContactForm = () => {
       </label>
       {status === 'error' && (
         <p className="m-0 text-sm text-red-700">
-          No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos a contacto@velant.mx.
+          No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos a contacto@agenciavelant.mx.
         </p>
       )}
       <button

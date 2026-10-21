@@ -152,7 +152,7 @@ export default function Home() {
               Cuéntanos de tu negocio. Te respondemos con una propuesta, tiempos y costos claros. Sin compromiso.
             </p>
             <div className="text-[15px] leading-loose">
-              <div>contacto@velant.mx</div>
+              <div>contacto@agenciavelant.mx</div>
               <div>Veracruz, México</div>
             </div>
           </div>

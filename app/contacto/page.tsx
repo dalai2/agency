@@ -116,8 +116,8 @@ export default function ContactoPage() {
                 <Mail className="text-accent" size={32} />
               </div>
               <h3 className="text-lg font-bold text-dark mb-2">Email</h3>
-              <a href="mailto:contacto@velant.mx" className="text-primary hover:underline">
-                contacto@velant.mx
+              <a href="mailto:contacto@agenciavelant.mx" className="text-primary hover:underline">
+                contacto@agenciavelant.mx
               </a>
             </Card>
 
@@ -315,10 +315,10 @@ export default function ContactoPage() {
                   Escríbenos directamente a nuestro email si prefieres comunicación escrita detallada.
                 </p>
                 <a
-                  href="mailto:contacto@velant.mx"
+                  href="mailto:contacto@agenciavelant.mx"
                   className="text-primary hover:underline font-medium"
                 >
-                  contacto@velant.mx
+                  contacto@agenciavelant.mx
                 </a>
               </Card>
             </div>
