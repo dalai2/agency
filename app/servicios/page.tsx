@@ -37,7 +37,8 @@ export default function ServiciosPage() {
       descripcion: 'Tienda online completa lista para vender',
       incluye: [
         'Hasta 50 productos',
-        'Pasarela de pagos (Stripe/PayPal)',
+        'Pagos con Mercado Pago',
+        'Dominio y hosting incluidos',
         'Panel de administración',
         'Gestión de inventario',
         'Carrito de compras',
