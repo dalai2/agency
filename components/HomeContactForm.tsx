@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { trackLead } from '@/lib/meta';
 
 const fieldClass =
   'w-full rounded-md border border-[#b9ccd1] bg-white px-3.5 py-3 text-[15px] font-normal text-primary focus:outline-none focus:ring-2 focus:ring-primary';
@@ -31,6 +32,7 @@ const HomeContactForm = () => {
         },
       ]);
       if (error) throw error;
+      trackLead('E-commerce');
       setStatus('sent');
     } catch (err) {
       console.error('Error al enviar formulario:', err);

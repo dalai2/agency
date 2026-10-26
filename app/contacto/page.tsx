@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/lib/supabase';
+import { trackLead } from '@/lib/meta';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 
@@ -53,6 +54,7 @@ export default function ContactoPage() {
 
       if (error) throw error;
 
+      trackLead(data.servicio_interes);
       setSubmitStatus('success');
       reset();
       

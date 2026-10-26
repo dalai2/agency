@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MetaPixel from "@/components/MetaPixel";
 
 const exo2 = Exo_2({ 
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
+        <MetaPixel />
       </body>
     </html>
   );
