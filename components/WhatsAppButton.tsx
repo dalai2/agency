@@ -2,15 +2,14 @@
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
+import { whatsappUrl } from '@/lib/contact';
 
 const WhatsAppButton = () => {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '52XXXXXXXXXX';
-  const message = encodeURIComponent('Hola, me interesa conocer sus servicios');
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+  const href = whatsappUrl('Hola, me interesa conocer sus servicios');
 
   return (
     <a
-      href={whatsappUrl}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group"

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { trackLead } from '@/lib/meta';
+import { whatsappUrl } from '@/lib/contact';
 
 const fieldClass =
   'w-full rounded-md border border-[#b9ccd1] bg-white px-3.5 py-3 text-[15px] font-normal text-primary focus:outline-none focus:ring-2 focus:ring-primary';
@@ -72,7 +73,11 @@ const HomeContactForm = () => {
       </label>
       {status === 'error' && (
         <p className="m-0 text-sm text-red-700">
-          No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos a contacto@agenciavelant.mx.
+          No pudimos enviar tu solicitud. Intenta de nuevo o{' '}
+          <a href={whatsappUrl('Hola, quiero cotizar mi tienda en línea')} target="_blank" rel="noopener noreferrer" className="font-semibold underline">
+            escríbenos por WhatsApp
+          </a>
+          .
         </p>
       )}
       <button

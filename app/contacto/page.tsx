@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { supabase } from '@/lib/supabase';
 import { trackLead } from '@/lib/meta';
+import { whatsappUrl } from '@/lib/contact';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 
@@ -65,7 +66,7 @@ export default function ContactoPage() {
     } catch (error: any) {
       console.error('Error al enviar formulario:', error);
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'Hubo un error al enviar el formulario. Por favor, intenta de nuevo o contáctanos por WhatsApp.');
+      setErrorMessage('No pudimos enviar el formulario. Intenta de nuevo o escríbenos por WhatsApp con el botón de abajo.');
     } finally {
       setIsSubmitting(false);
     }
@@ -82,8 +83,7 @@ export default function ContactoPage() {
     'Otro',
   ];
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '52XXXXXXXXXX';
-  const whatsappMessage = encodeURIComponent('Hola, me interesa conocer sus servicios');
+  const whatsappLink = whatsappUrl('Hola, me interesa conocer sus servicios');
 
   return (
     <div className="pt-20">
@@ -291,7 +291,7 @@ export default function ContactoPage() {
                   Chatea con nosotros y obtén respuesta en minutos. Estamos disponibles para resolver todas tus dudas.
                 </p>
                 <a
-                  href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block"
