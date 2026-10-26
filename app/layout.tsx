@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MetaPixel from "@/components/MetaPixel";
+import { Analytics } from "@vercel/analytics/next";
 
 const exo2 = Exo_2({ 
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <MetaPixel />
+        <Analytics />
       </body>
     </html>
   );
