@@ -5,7 +5,6 @@ import { Mail, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { supabase } from '@/lib/supabase';
 import { trackLead } from '@/lib/meta';
 import { whatsappUrl } from '@/lib/contact';
 import Card from '@/components/Card';
@@ -42,18 +41,18 @@ export default function ContactoPage() {
     setErrorMessage('');
 
     try {
-      const { error } = await supabase.from('leads').insert([
-        {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           nombre: data.nombre,
           email: data.email,
           telefono: data.telefono || null,
           servicio_interes: data.servicio_interes,
           mensaje: data.mensaje,
-          status: 'nuevo',
-        },
-      ]);
-
-      if (error) throw error;
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       trackLead(data.servicio_interes);
       setSubmitStatus('success');

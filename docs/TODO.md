@@ -12,16 +12,15 @@ El código ya está: `components/MetaPixel.tsx`, `lib/meta.ts` y `app/api/meta/l
 - [ ] Verificar el dominio `agenciavelant.mx` en Meta.
 - [ ] Decidir si se envían correo/teléfono hasheados para mejorar la coincidencia (hoy no se envía ningún dato personal).
 
-## Formulario sin Supabase en producción (verificado 26 oct 2026)
+## Leads: Neon + aviso por Telegram (hecho en código, falta publicar y el bot)
 
-El sitio publicado (www.agenciavelant.mx) se construyó **sin** `NEXT_PUBLIC_SUPABASE_URL` ni `NEXT_PUBLIC_SUPABASE_ANON_KEY`: el código usa `placeholder.supabase.co`, así que **todos los envíos del formulario fallan** y ningún lead se guarda. Mientras tanto, el aviso de error ofrece WhatsApp.
+Los formularios ya no usan Supabase: mandan POST a `/api/leads` (`app/api/leads/route.ts`, `lib/leads.ts`), que guarda en la base Neon `agency-leads` (conectada al proyecto `agency` de Vercel; la tabla `leads` se crea sola la primera vez) y avisa por Telegram. Probado en local contra esa base: guarda, rechaza datos vacíos e ignora el campo trampa.
 
-- [ ] Crear el proyecto en Supabase y ejecutar `supabase-schema.sql` en el SQL Editor (crea `leads` y la política que permite insertar sin iniciar sesión).
-- [ ] En Vercel → Settings → Environment Variables: `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
-- [ ] **Volver a desplegar:** las variables `NEXT_PUBLIC_*` se incrustan al construir, no basta con guardarlas.
-- [ ] Enviar el formulario desde el sitio publicado y ver el renglón en la tabla `leads`.
-- [ ] Hasta entonces, el pixel de Meta no registra `Lead` (solo lo dispara tras guardar con éxito).
-- [ ] Decidir cómo enterarse de los leads nuevos (hoy nadie recibe aviso; hay que abrir la tabla).
+- [ ] Publicar (push a `main`). Hasta entonces el sitio en producción sigue con el formulario roto.
+- [ ] Crear el bot en @BotFather, escribirle un mensaje y obtener tu chat id; poner `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` en Vercel (Production) y volver a desplegar. Sin ellas el lead se guarda pero nadie recibe aviso.
+- [ ] Enviar el formulario desde el sitio publicado y confirmar el renglón y el mensaje.
+- [ ] El pixel de Meta registra `Lead` solo tras guardar con éxito.
+- [ ] `lib/supabase.ts`, `supabase-schema.sql` y la dependencia `@supabase/supabase-js` ya no se usan; se pueden borrar.
 
 ## WhatsApp
 

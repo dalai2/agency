@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { supabase } from '@/lib/supabase';
 import { trackLead } from '@/lib/meta';
 import { whatsappUrl } from '@/lib/contact';
 
@@ -22,17 +21,18 @@ const HomeContactForm = () => {
     setStatus('sending');
     try {
       // La columna `email` es NOT NULL, así que guarda aquí el correo o el WhatsApp.
-      const { error } = await supabase.from('leads').insert([
-        {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           nombre,
           email: contacto,
           telefono: esCorreo ? null : contacto.slice(0, 20),
           servicio_interes: 'E-commerce',
           mensaje,
-          status: 'nuevo',
-        },
-      ]);
-      if (error) throw error;
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       trackLead('E-commerce');
       setStatus('sent');
     } catch (err) {
