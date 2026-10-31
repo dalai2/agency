@@ -33,3 +33,17 @@ Videos (1080×1920, 5 s, con música y efectos):
 - **Oferta:** si mencionas precio, que sea el real y vigente ($8,000, antes $12,000 = 33% menos, no 50%) y los "10 lugares" que de verdad existan. Los reels no la mencionan; es opcional agregarla al comentario.
 - **Enlace:** el texto de un reel no es clicable; por eso el enlace va en el primer comentario fijado y, además, en el botón de la página.
 - **Hashtags:** 3 o 4 como máximo, por ejemplo `#gatitos #tiendaenlinea #emprendedores #méxico`.
+
+## Reel 3 — Gatito fantasma (Halloween)
+
+Archivo: `gatito-fantasma.mp4`. Publicar entre martes y miércoles, de 12:00 a 14:00 (no en la madrugada).
+
+**Descripción:**
+> Hasta los fantasmas compran en línea 👻🎃 ¿Cómo se llama este gatito? Ponle nombre en los comentarios 👇 Tu tienda en línea, lista en días y sin sustos.
+>
+> (Video hecho con IA.)
+
+**Primer comentario (fijarlo):**
+> ¿Quieres tu tienda en línea? Cotiza gratis en agenciavelant.mx/?utm_source=facebook&utm_medium=reel&utm_campaign=halloween&utm_content=gatito_fantasma
+
+**Hashtags:** `#halloween #gatitos #tiendaenlinea #méxico`
