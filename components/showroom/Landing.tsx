@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import type { CSSProperties, ReactNode } from 'react';
 import {
-  ArrowLeft, ArrowRight, Award, Briefcase, Calculator, Calendar, Clock, Coffee, CreditCard,
+  ArrowRight, Award, Briefcase, Calculator, Calendar, Clock, Coffee, CreditCard,
   FileText, Flame, Gem, Heart, Leaf, MapPin, Package, Scale, ShieldCheck, Smile, Sparkles,
   Star, Stethoscope, Truck, UtensilsCrossed, Users, Wine, Quote,
   type LucideIcon,
 } from 'lucide-react';
-import { whatsappUrl } from '@/lib/contact';
+import DemoBar from './DemoBar';
+import DemoFooter from './DemoFooter';
 import type { IconKey, Style, Vertical } from '@/lib/showroom/types';
 
 const ICONS: Record<IconKey, LucideIcon> = {
@@ -63,7 +63,7 @@ function Art({ kind, icon, i = 0, style, noIcon, src, priority, sizes = '(min-wi
 
 export default function Landing({ v, s }: { v: Vertical; s: Style }) {
   const t = s.t;
-  const wa = whatsappUrl(`Hola, vi la demo "${v.brand}" (${v.nombre} · estilo ${s.nombre}) en el showroom de Velant y quiero una página así.`);
+  const cta = '#cierre'; // los botones de la maqueta solo navegan dentro de la demo
   const hardShadow = t.hard ? `5px 5px 0 ${t.ink}` : undefined;
   const cardBorder = `${t.bw === '0px' ? '1px' : t.bw} solid ${t.line}`;
   const Brand = ICONS[v.icon];
@@ -95,9 +95,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
     return (
       <a
         href={href}
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel="noreferrer"
-        className="inline-flex items-center gap-2 px-6 py-3.5 text-[15px] transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-[15px] transition-transform hover:-translate-y-0.5"
         style={{ ...btnBase, background: bg, color: fg, borderColor: bd }}
       >
         {children}
@@ -119,26 +117,15 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
         {v.hero.sub}
       </p>
       <div className={`mt-9 flex flex-wrap gap-3 ${center ? 'justify-center' : ''}`}>
-        <Btn href={wa}>{v.hero.cta} <ArrowRight size={16} /></Btn>
+        <Btn href={cta}>{v.hero.cta} <ArrowRight size={16} /></Btn>
         <Btn href="#catalogo" primary={false}>{v.hero.cta2}</Btn>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pt-10" style={root}>
-      {/* Barra de demo (no forma parte de la landing) */}
-      <div className="fixed inset-x-0 top-0 z-50 flex h-10 items-center justify-between gap-3 bg-[#111] px-4 text-xs text-white">
-        <Link href="/showroom" className="flex items-center gap-1.5 opacity-90 hover:opacity-100">
-          <ArrowLeft size={14} /> Showroom
-        </Link>
-        <span className="hidden truncate opacity-70 sm:block">
-          Demo · {v.nombre} · estilo {s.nombre} · contenido ficticio
-        </span>
-        <a href={wa} target="_blank" rel="noreferrer" className="rounded bg-white px-3 py-1 font-semibold text-black hover:bg-[#F0F7F7]">
-          Quiero una así
-        </a>
-      </div>
+    <div className="min-h-screen pt-12" style={root}>
+      <DemoBar vert={v.slug} estilo={s.slug} />
 
       {/* Navegación */}
       <header style={heroStyle} className="relative z-10">
@@ -150,7 +137,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
           <nav className="hidden items-center gap-8 text-sm md:flex" style={heroMuted}>
             {v.nav.map((n) => <a key={n} href="#catalogo" className="hover:opacity-100">{n}</a>)}
           </nav>
-          <Btn href={wa}>{v.hero.cta}</Btn>
+          <Btn href={cta}>{v.hero.cta}</Btn>
         </div>
       </header>
 
@@ -294,12 +281,12 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
       </section>
 
       {/* Cierre */}
-      <section className="px-6 pb-20 md:px-8 md:pb-28">
+      <section id="cierre" className="scroll-mt-16 px-6 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-[1180px] px-6 py-16 text-center md:px-12 md:py-20" style={{ background: t.accent, color: t.accentInk, borderRadius: t.radius, border: t.hard ? `${t.bw} solid ${t.ink}` : undefined, boxShadow: hardShadow }}>
           <h2 style={{ ...h, fontSize: h2Size }}>{v.finalCta.title}</h2>
           <p className="mx-auto mt-4 max-w-md text-lg" style={{ opacity: 0.85 }}>{v.finalCta.sub}</p>
           <div className="mt-8 flex justify-center">
-            <Btn href={wa} invert>{v.finalCta.btn} <ArrowRight size={16} /></Btn>
+            <Btn href={cta} invert>{v.finalCta.btn} <ArrowRight size={16} /></Btn>
           </div>
         </div>
       </section>
@@ -310,6 +297,8 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
           <span>{v.footer.line2}</span>
         </div>
       </footer>
+
+      <DemoFooter vert={v.slug} estilo={s.slug} />
     </div>
   );
 }
