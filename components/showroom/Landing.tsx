@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { CSSProperties, ReactNode } from 'react';
 import {
@@ -19,8 +20,15 @@ const ICONS: Record<IconKey, LucideIcon> = {
 const mix = (pct: number, base = 'var(--surface)') => `color-mix(in srgb, var(--accent) ${pct}%, ${base})`;
 
 /** Ilustración abstracta de relleno: se cambia por foto real cuando hay cliente. */
-function Art({ kind, icon, i = 0, style, noIcon }: { kind: Style['art']; icon: IconKey; i?: number; style?: CSSProperties; noIcon?: boolean }) {
+function Art({ kind, icon, i = 0, style, noIcon, src, priority, sizes = '(min-width: 1024px) 380px, 50vw' }: { kind: Style['art']; icon: IconKey; i?: number; style?: CSSProperties; noIcon?: boolean; src?: string; priority?: boolean; sizes?: string }) {
   const Icon = ICONS[icon];
+  if (src) {
+    return (
+      <div className="relative h-full w-full overflow-hidden" style={{ background: mix(14), ...style }}>
+        <Image src={src} alt="" fill sizes={sizes} priority={priority} className="object-cover" />
+      </div>
+    );
+  }
   const a = [88, 70, 55][i % 3];
   const b = [30, 45, 22][i % 3];
   return (
@@ -59,6 +67,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
   const hardShadow = t.hard ? `5px 5px 0 ${t.ink}` : undefined;
   const cardBorder = `${t.bw === '0px' ? '1px' : t.bw} solid ${t.line}`;
   const Brand = ICONS[v.icon];
+  const img = (k: string | number) => `/showroom/${v.slug}/${k}.jpg`;
 
   const root = {
     '--bg': t.bg, '--surface': t.surface, '--ink': t.ink, '--muted': t.muted,
@@ -151,7 +160,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
           <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-6 pb-20 pt-10 md:grid-cols-2 md:px-8 md:pb-28 md:pt-16">
             {heroText(false)}
             <div className="aspect-[4/5] w-full overflow-hidden" style={{ borderRadius: s.art === 'arch' ? '999px 999px 0 0' : t.radius, border: cardBorder, boxShadow: hardShadow }}>
-              <Art kind={s.art} icon={v.icon} />
+              <Art kind={s.art} icon={v.icon} src={img('hero')} priority sizes="(min-width: 768px) 560px, 100vw" />
             </div>
           </div>
         )}
@@ -161,7 +170,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
             <div className="mx-auto mt-14 grid max-w-4xl grid-cols-3 gap-3 md:gap-5">
               {[0, 1, 2].map((i) => (
                 <div key={i} className={`overflow-hidden ${i === 1 ? 'aspect-[3/4] md:-mt-8' : 'aspect-[3/4] md:mt-6'}`} style={{ borderRadius: t.radius, border: cardBorder, boxShadow: hardShadow }}>
-                  <Art kind={s.art} icon={v.offers[i].icon} i={i} />
+                  <Art kind={s.art} icon={v.offers[i].icon} i={i} src={img(i)} sizes="(min-width: 768px) 280px, 33vw" />
                 </div>
               ))}
             </div>
@@ -170,8 +179,8 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
         {s.hero === 'bleed' && (
           <>
             <div className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full opacity-25 blur-3xl" style={{ background: t.accent }} />
-            <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[88%] w-[38%] md:block" style={{ opacity: 0.9 }}>
-              <Art kind={s.art} icon={v.icon} style={{ background: 'transparent' }} noIcon />
+            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[48%] md:block" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, #000 45%)', maskImage: 'linear-gradient(to right, transparent, #000 45%)' }}>
+              <Art kind={s.art} icon={v.icon} src={img('hero')} priority sizes="600px" />
             </div>
             <div className="relative mx-auto max-w-[1180px] px-6 pb-24 pt-14 md:px-8 md:pb-36 md:pt-24">
               <div className="max-w-2xl">{heroText(false)}</div>
@@ -204,7 +213,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
             {v.offers.map((o, i) => (
               <article key={o.name} className="overflow-hidden" style={{ background: t.surface, border: cardBorder, borderRadius: t.radius, boxShadow: hardShadow }}>
                 <div className="relative aspect-[4/3]">
-                  <Art kind={s.art} icon={o.icon} i={i} />
+                  <Art kind={s.art} icon={o.icon} i={i} src={img(i)} />
                   {o.tag && <span className="absolute left-3 top-3 px-2.5 py-1 text-[11px] font-semibold" style={{ background: t.accent, color: t.accentInk, borderRadius: t.btn === 'pill' ? 999 : t.radius }}>{o.tag}</span>}
                 </div>
                 <div className="p-5">
@@ -221,7 +230,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
             {v.offers.map((o, i) => (
               <article key={o.name} className="relative aspect-[4/5] overflow-hidden" style={{ borderRadius: t.radius, border: cardBorder, boxShadow: hardShadow }}>
-                <Art kind={s.art} icon={o.icon} i={i} />
+                <Art kind={s.art} icon={o.icon} i={i} src={img(i)} />
                 {o.tag && <span className="absolute left-3 top-3 px-2.5 py-1 text-[11px] font-semibold" style={{ background: t.accent, color: t.accentInk, borderRadius: t.btn === 'pill' ? 999 : t.radius }}>{o.tag}</span>}
                 <div className="absolute inset-x-2.5 bottom-2.5 p-3.5 md:inset-x-3 md:bottom-3 md:p-4" style={{ background: t.surface, borderRadius: `calc(${t.radius} * 0.6)`, border: t.hard ? cardBorder : undefined }}>
                   <h3 className="text-sm font-semibold leading-tight md:text-base">{o.name}</h3>
@@ -239,7 +248,7 @@ export default function Landing({ v, s }: { v: Vertical; s: Style }) {
               <article key={o.name} className="flex items-center gap-5 py-6 md:gap-8" style={{ borderBottom: `1px solid ${t.line}` }}>
                 <span className="hidden w-8 text-sm tabular-nums md:block" style={{ color: t.muted }}>{String(i + 1).padStart(2, '0')}</span>
                 <div className="h-16 w-16 shrink-0 overflow-hidden md:h-20 md:w-20" style={{ borderRadius: t.radius }}>
-                  <Art kind={s.art} icon={o.icon} i={i} />
+                  <Art kind={s.art} icon={o.icon} i={i} src={img(i)} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 style={{ ...h, fontSize: '1.35rem' }}>{o.name}{o.tag && <span className="ml-3 align-middle text-[11px] font-semibold uppercase tracking-wider" style={{ color: t.accent === t.ink ? t.muted : t.accent }}>{o.tag}</span>}</h3>
