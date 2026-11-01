@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MetaPixel from "@/components/MetaPixel";
+import ChromeGate from "@/components/ChromeGate";
 import { Analytics } from "@vercel/analytics/next";
 
 const exo2 = Exo_2({ 
@@ -41,12 +42,14 @@ export default function RootLayout({
   return (
     <html lang="es-MX">
       <body className={`${poppins.variable} ${exo2.variable} font-sans`} style={{ fontFamily: 'var(--font-poppins)' }}>
-        <Header />
+        <ChromeGate><Header /></ChromeGate>
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
-        <WhatsAppButton />
+        <ChromeGate>
+          <Footer />
+          <WhatsAppButton />
+        </ChromeGate>
         <MetaPixel />
         <Analytics />
       </body>
