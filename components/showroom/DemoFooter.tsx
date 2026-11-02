@@ -32,7 +32,7 @@ export default function DemoFooter({ vert, estilo }: { vert: string; estilo: str
           </a>
         </div>
 
-        <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
           {[
             { c: prev, dir: 'prev' as const },
             { c: next, dir: 'next' as const },
@@ -48,7 +48,7 @@ export default function DemoFooter({ vert, estilo }: { vert: string; estilo: str
                 <span className="mt-0.5 block truncate font-semibold">{c.brand} · {c.sNombre}</span>
                 <span className="block truncate text-sm text-white/60">{c.vNombre}</span>
               </span>
-              <span className="flex shrink-0">
+              <span className="hidden shrink-0 sm:flex">
                 {c.colors.map((col, k) => (
                   <i key={k} className="-ml-1.5 h-5 w-5 rounded-full border border-white/30 first:ml-0" style={{ background: col }} />
                 ))}

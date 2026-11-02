@@ -61,3 +61,12 @@ html {
 }
 
 
+
+/* Landings de demo del showroom: sus enlaces heredan el color del diseño */
+.landing-demo a {
+  color: inherit;
+  text-decoration: none;
+}
+.landing-demo {
+  overflow-x: clip;
+}
